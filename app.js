@@ -14,6 +14,13 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static("public"));
 
+mongoose.connect("mongodb://localhost:27017/wikiDB", {useNewUrlParser: true});
+const articleSchema = {
+  title: String,
+  content: String
+};
+const Article = mongoose.model("Article", articleSchema);
+
 app.get('/', function (req, res) {
     res.send('hello world')
   });
